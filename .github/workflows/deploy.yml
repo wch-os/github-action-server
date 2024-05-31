@@ -29,7 +29,6 @@ jobs:
       - name: 빌드된 파일 이름 변경하기
         run: mv ./build/libs/*SNAPSHOT.jar ./project.jar
 
-
       - name: SCP로 EC2에 빌드된 파일 전송하기
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -55,7 +54,7 @@ jobs:
           script: | # 실행중인 서버 내리고, build 완료된 전송받은 파일로 실행
             rm -rf /home/ubuntu/github-actions-server/current
             mkdir /home/ubuntu/github-actions-server/current
-            mv /home.ubuntu/github-actions-server/tobe/project.jar /home/ubuntu/github-actions-server/current/project.jar
+            mv /home/ubuntu/github-actions-server/tobe/project.jar /home/ubuntu/github-actions-server/current/project.jar
             cd /home/ubuntu/github-actions-server/current
             
             sudo fuser -k -n tcp 8080 || true
